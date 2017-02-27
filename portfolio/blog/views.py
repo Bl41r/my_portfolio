@@ -1,10 +1,17 @@
-from django.shortcuts import render
+from django.views.generic import TemplateView
+from .models import BlogArticle
 
 
-# Create your views here.
-def home_view(request):
-    """The home view (blog)."""
-    context = {
-        'page_title': 'Home',
-    }
-    return render(request, 'blog/index.html', context)
+class HomePageView(TemplateView):
+    """Return the Home View inheriting from TemplateView."""
+
+    template_name = 'blog/index.html'
+    model = BlogArticle
+
+    def get_context_data(self):
+        """View for the home page."""
+        articles = BlogArticle.objects.all()
+        context = {
+            'page_title': 'Home',
+        }
+        return {'context': context, 'articles': articles}
