@@ -10,7 +10,7 @@ class HomePageView(TemplateView):
 
     def get_context_data(self):
         """View for the home page."""
-        articles = BlogArticle.objects.all()
+        articles = BlogArticle.objects.filter(published=True).order_by('-date_published')
         context = {
             'page_title': 'Home',
         }
