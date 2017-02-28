@@ -1,0 +1,15 @@
+{%  extends "blog/base.html" %}
+
+{% block content %}
+
+    <h1>PROJECTS VIEW</h1>
+
+    {% for project in projects %}
+
+        <h3>{{ project.title }}</h3>
+        <p>{{ project.text }}</p>
+        <h5>{{ project.date_added }}</h5>
+
+    {%  endfor %}
+
+{% endblock %}
