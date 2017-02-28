@@ -31,6 +31,9 @@ class Education(models.Model):
     degree = models.CharField(max_length=128)
     graduation_date = models.DateTimeField()
 
+    def __str__(self):
+        return self.school + ' ' + self.degree
+
 
 @python_2_unicode_compatible
 class Profile(models.Model):
