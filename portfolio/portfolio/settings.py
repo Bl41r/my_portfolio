@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'blog',
     'portfolio',
     'projects',
+    'taggit'
 ]
 
 MIDDLEWARE = [
