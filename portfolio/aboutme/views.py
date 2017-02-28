@@ -13,8 +13,8 @@ class AboutMeView(TemplateView):
         """View for the home page."""
         jobs = Job.objects.all().order_by('-end_date')
         education = Education.objects.all().order_by('-graduation_date')
-        # profile =
+        profile = Profile.objects.filter(user__username='david').first()
         context = {
             'page_title': 'About Me',
         }
-        return {'context': context, 'jobs': jobs, 'education': education}
+        return {'context': context, 'jobs': jobs, 'education': education, 'profile': profile}

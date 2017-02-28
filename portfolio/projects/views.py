@@ -15,6 +15,6 @@ class ProjectView(TemplateView):
         """View for the home page."""
         projects = Project.objects.all().order_by('-date_added')
         context = {
-            'page_title': 'Home',
+            'page_title': 'My Projects',
         }
         return {'context': context, 'projects': projects}

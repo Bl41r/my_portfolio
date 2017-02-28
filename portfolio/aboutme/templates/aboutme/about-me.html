@@ -3,10 +3,9 @@
 {% block content %}
 
 <h1>Profile View</h1>
-{# 
-<h3>user.name</h3>
-<h3>profile.bio</h3>
- #}
+<h3>{{ profile.user.first_name }} {{ profile.user.last_name }}</h3>
+<h5>{{ profile.bio }}</h5>
+
 <h3>Education</h3>
 {% for edu in education %}
     <h5>{{ edu.school }}</h5>
