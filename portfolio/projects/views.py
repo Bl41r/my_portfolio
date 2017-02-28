@@ -8,7 +8,7 @@ from .models import Project
 class ProjectView(TemplateView):
     """Return the Project View, inheriting from TemplateView."""
 
-    template_name = 'projects/index.html'
+    template_name = 'projects/projects.html'
     model = Project
 
     def get_context_data(self):
@@ -17,4 +17,4 @@ class ProjectView(TemplateView):
         context = {
             'page_title': 'Home',
         }
-        return {'context': context, 'articles': projects}
+        return {'context': context, 'projects': projects}
