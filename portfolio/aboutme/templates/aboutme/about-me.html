@@ -1,0 +1,21 @@
+{% extends "blog/base.html" %}
+
+{% block content %}
+
+<h1>Profile View</h1>
+<h3>{{ profile.user.first_name }} {{ profile.user.last_name }}</h3>
+<h5>{{ profile.bio }}</h5>
+
+<h3>Education</h3>
+{% for edu in education %}
+    <h5>{{ edu.school }}</h5>
+    <h5>{{ edu.degree }}</h5>
+{% endfor %}
+
+<h3>Jobs</h3>
+{% for job in jobs %}
+    <h5>{{ job.title }}</h5>
+    <p>{{ job.description }}</p>
+{%  endfor %}
+
+{% endblock %}

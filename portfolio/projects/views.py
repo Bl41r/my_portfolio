@@ -11,10 +11,9 @@ class ProjectView(TemplateView):
     template_name = 'projects/projects.html'
     model = Project
 
-    def get_context_data(self):
+    def get_context_data(self, **kwargs):
         """View for the home page."""
-        projects = Project.objects.all().order_by('-date_added')
-        context = {
-            'page_title': 'Home',
-        }
-        return {'context': context, 'projects': projects}
+        context = super(ProjectView, self).get_context_data(**kwargs)
+        context['projects'] = Project.objects.all().order_by('-date_added')
+        context['page_title'] = 'My Projects'
+        return context
