@@ -3,7 +3,7 @@ from .models import BlogArticle
 
 
 class HomePageView(TemplateView):
-    """Return the Home View inheriting from TemplateView."""
+    """Home View inheriting from TemplateView."""
 
     template_name = 'blog/index.html'
     model = BlogArticle
