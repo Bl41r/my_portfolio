@@ -12,7 +12,7 @@ class Project(models.Model):
     title = models.CharField(max_length=128)
     text = models.TextField()
     github_url = models.URLField()
-    date_added = models.DateTimeField(auto_now_add=True, null=False)
+    date_added = models.DateField(auto_now_add=True, null=False)
     author = models.ForeignKey(settings.AUTH_USER_MODEL, null=True)
 
     def __str__(self):

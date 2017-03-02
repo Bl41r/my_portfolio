@@ -10,12 +10,15 @@
 {% for edu in education %}
     <h5>{{ edu.school }}</h5>
     <h5>{{ edu.degree }}</h5>
+    <h5>{{ edu.graduation_date.month }} / {{ edu.graduation_date.year }}</h5>
 {% endfor %}
 
 <h3>Jobs</h3>
 {% for job in jobs %}
     <h5>{{ job.title }}</h5>
     <p>{{ job.description }}</p>
+    <h5>{{ job.start_date.month }} / {{ job.start_date.year }}</h5>
+    <h5>{{ job.end_date.month }} / {{ job.end_date.year }}
 {%  endfor %}
 
 {% endblock %}

@@ -14,8 +14,8 @@ class Job(models.Model):
 
     title = models.CharField(max_length=128)
     description = models.TextField()
-    start_date = models.DateTimeField()
-    end_date = models.DateTimeField()
+    start_date = models.DateField()
+    end_date = models.DateField()
     skills = TaggableManager()
 
     def __str__(self):
@@ -29,7 +29,7 @@ class Education(models.Model):
 
     school = models.CharField(max_length=128)
     degree = models.CharField(max_length=128)
-    graduation_date = models.DateTimeField()
+    graduation_date = models.DateField()
 
     def __str__(self):
         return self.school + ' ' + self.degree
@@ -41,6 +41,8 @@ class Profile(models.Model):
 
     user = models.OneToOneField(User, related_name="profile", on_delete=models.CASCADE)
     bio = models.TextField(default="")
+    educations = models.ForeignKey(Education, null=True)
+    jobs = models.ForeignKey(Job, null=True)
 
     @property
     def is_active(self):
