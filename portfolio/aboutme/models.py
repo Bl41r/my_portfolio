@@ -5,6 +5,7 @@ from taggit.managers import TaggableManager
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+from projects.models import Project
 
 
 # Create your models here -- jobs, education, profile
@@ -43,6 +44,7 @@ class Profile(models.Model):
     bio = models.TextField(default="")
     educations = models.ForeignKey(Education, null=True)
     jobs = models.ForeignKey(Job, null=True)
+    projects = models.ForeignKey(Project, null=True)
 
     @property
     def is_active(self):
