@@ -1,7 +1,6 @@
 from __future__ import unicode_literals
 from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
-from django.conf import settings
 
 
 # Create your models here.
@@ -13,7 +12,6 @@ class Project(models.Model):
     text = models.TextField()
     github_url = models.URLField()
     date_added = models.DateField(auto_now_add=True, null=False)
-    author = models.ForeignKey(settings.AUTH_USER_MODEL, null=True)
 
     def __str__(self):
         """Make it show up recognizably in the shell/admin view."""
