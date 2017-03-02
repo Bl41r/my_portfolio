@@ -42,9 +42,9 @@ class Profile(models.Model):
 
     user = models.OneToOneField(User, related_name="profile", on_delete=models.CASCADE)
     bio = models.TextField(default="")
-    educations = models.ForeignKey(Education, null=True)
-    jobs = models.ForeignKey(Job, null=True)
-    projects = models.ForeignKey(Project, null=True)
+    educations = models.ForeignKey(Education, null=True, related_name='profile', on_delete=models.CASCADE)
+    jobs = models.ForeignKey(Job, null=True, related_name='profile', on_delete=models.CASCADE)
+    projects = models.ForeignKey(Project, null=True, related_name='profile', on_delete=models.CASCADE)
 
     @property
     def is_active(self):
