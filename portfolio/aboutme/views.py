@@ -13,7 +13,7 @@ class AboutMeView(TemplateView):
         """View for the home page."""
         context = super(AboutMeView, self).get_context_data(**kwargs)
         context['page_title'] = 'About Me'
-        context['jobs'] = Job.objects.all().order_by('-end_date')
-        context['education'] = Education.objects.all().order_by('-graduation_date')
+        context['jobs'] = Job.objects.filter(profile__user__username='david').all()
+        context['education'] = Education.objects.filter(profile__user__username='david')
         context['profile'] = Profile.objects.filter(user__username='david').first()
         return context
