@@ -14,6 +14,6 @@ class ProjectView(TemplateView):
     def get_context_data(self, **kwargs):
         """View for the home page."""
         context = super(ProjectView, self).get_context_data(**kwargs)
-        context['projects'] = Project.objects.all().order_by('-date_added')
+        context['projects'] = Project.objects.filter(profile__user__username='david').all().order_by('-date_added')
         context['page_title'] = 'My Projects'
         return context
