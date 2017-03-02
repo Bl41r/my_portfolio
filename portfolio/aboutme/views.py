@@ -13,6 +13,6 @@ class AboutMeView(TemplateView):
         context = super(AboutMeView, self).get_context_data(**kwargs)
         context['page_title'] = 'About Me'
         context['jobs'] = Job.objects.filter(profile__user__username='david').all()
-        context['education'] = Education.objects.filter(profile__user__username='david').all()
         context['profile'] = Profile.objects.filter(user__username='david').first()
+        context['education'] = Education.objects.filter(profile__user__username='david').all()
         return context

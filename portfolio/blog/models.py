@@ -2,6 +2,7 @@ from __future__ import unicode_literals
 from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
 from django.conf import settings
+from aboutme.models import Profile
 
 
 # Create your models here.
@@ -12,7 +13,7 @@ class BlogArticle(models.Model):
     title = models.CharField(max_length=128)
     text = models.TextField()
     date_published = models.DateField(auto_now_add=True, null=False)
-    author = models.ForeignKey(settings.AUTH_USER_MODEL, null=True)
+    author = models.ForeignKey(Profile, related_name='articles')
     published = models.BooleanField(default=False)
 
     def __str__(self):
