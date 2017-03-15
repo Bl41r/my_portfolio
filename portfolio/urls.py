@@ -24,4 +24,4 @@ urlpatterns = [
     url(r'', include('blog.urls')),
     url(r'projects/', include('projects.urls')),
     url(r'about-me/', include('aboutme.urls')),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+]# + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
