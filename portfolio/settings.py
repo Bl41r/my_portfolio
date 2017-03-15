@@ -155,4 +155,3 @@ if not DEBUG:
     EMAIL_USE_TLS = True
 else:
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-    SECRET_KEY = 'poodles'
