@@ -7,13 +7,12 @@ class AboutMeView(TemplateView):
     """About me view."""
 
     template_name = 'aboutme/about-me.html'
-    # model =
 
     def get_context_data(self, **kwargs):
         """View for the home page."""
         context = super(AboutMeView, self).get_context_data(**kwargs)
         context['page_title'] = 'About Me'
         context['jobs'] = Job.objects.filter(profile__user__username='david').all()
-        context['education'] = Education.objects.filter(profile__user__username='david')
         context['profile'] = Profile.objects.filter(user__username='david').first()
+        context['education'] = Education.objects.filter(profile__user__username='david').all()
         return context
