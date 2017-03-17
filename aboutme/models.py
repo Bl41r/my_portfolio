@@ -31,9 +31,9 @@ class Job(models.Model):
     title = models.CharField(max_length=128)
     description = models.TextField()
     start_date = models.DateField()
-    end_date = models.DateField()
-    skills = TaggableManager()
+    end_date = models.DateField(null=True, blank=True)
     profile = models.ForeignKey(Profile, related_name='jobs')
+    skills = TaggableManager()
 
     def __str__(self):
         """Str representation of model."""
