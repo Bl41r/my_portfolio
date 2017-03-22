@@ -17,6 +17,7 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from django.conf.urls.static import static
 from django.conf import settings
+from api.urls import router
 
 
 urlpatterns = [
@@ -25,3 +26,9 @@ urlpatterns = [
     url(r'projects/', include('projects.urls')),
     url(r'about-me/', include('aboutme.urls')),
 ]# + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+urlpatterns += [
+    url(r'^api/', include(router.urls)),
+    url(r'^api-auth/', include('rest_framework.urls',
+                               namespace='rest_framework')),
+]
