@@ -15,5 +15,6 @@ class ProjectViewSet(viewsets.ModelViewSet):
     permission_classes = (permissions.IsOwnerOrReadOnly,)
 
     def list(self, request):
-        serializer = ProjectSerializer(self.queryset, many=True)
+        queryset = Project.objects.all()
+        serializer = ProjectSerializer(queryset, many=True)
         return Response(serializer.data)

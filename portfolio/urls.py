@@ -23,8 +23,8 @@ from api.urls import router
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'', include('blog.urls')),
-    url(r'projects/', include('projects.urls')),
-    url(r'about-me/', include('aboutme.urls')),
+    url(r'^projects/', include('projects.urls')),
+    url(r'^about-me/', include('aboutme.urls')),
 ]# + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 urlpatterns += [

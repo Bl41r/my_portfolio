@@ -8,4 +8,4 @@ class IsOwnerOrReadOnly(permissions.BasePermission):
         """Safe methods allowed, other methods require user login."""
         if request.method in permissions.SAFE_METHODS:
             return True
-        return obj.owner == request.user
+        print(request.method + ' not allowed')
