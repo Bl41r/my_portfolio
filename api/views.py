@@ -12,10 +12,13 @@ class ProjectViewSet(viewsets.ModelViewSet):
 
     queryset = Project.objects.all()
     serializer_class = ProjectSerializer
-    permission_classes = (permissions.IsAuthenticatedOrReadOnly,
-                      IsAuthorOrReadOnly,)
+    permission_classes = (IsAuthorOrReadOnly, permissions.IsAuthenticatedOrReadOnly)
 
     def list(self, request):
         queryset = Project.objects.all()
         serializer = ProjectSerializer(queryset, many=True)
         return Response(serializer.data)
+
+    def perform_create(self, serializer):
+        """Associate user with instance."""
+        serializer.save(author=self.request.user.profile)
