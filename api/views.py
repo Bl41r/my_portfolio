@@ -3,6 +3,7 @@ from projects.models import Project
 from api.serializers import ProjectSerializer
 from rest_framework import permissions
 from rest_framework.response import Response
+from api.permissions import IsAuthorOrReadOnly
 
 
 # Create your views here.
@@ -11,7 +12,8 @@ class ProjectViewSet(viewsets.ModelViewSet):
 
     queryset = Project.objects.all()
     serializer_class = ProjectSerializer
-    permission_classes = (permissions.DjangoModelPermissionsOrAnonReadOnly,)
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly,
+                      IsAuthorOrReadOnly,)
 
     def list(self, request):
         queryset = Project.objects.all()
