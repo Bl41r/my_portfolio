@@ -1,8 +1,7 @@
-from django.shortcuts import render
 from rest_framework import viewsets
 from projects.models import Project
 from api.serializers import ProjectSerializer
-from api import permissions
+from rest_framework import permissions
 from rest_framework.response import Response
 
 
@@ -12,7 +11,7 @@ class ProjectViewSet(viewsets.ModelViewSet):
 
     queryset = Project.objects.all()
     serializer_class = ProjectSerializer
-    permission_classes = (permissions.IsOwnerOrReadOnly,)
+    permission_classes = (permissions.DjangoModelPermissionsOrAnonReadOnly,)
 
     def list(self, request):
         queryset = Project.objects.all()
