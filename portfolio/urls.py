@@ -15,20 +15,24 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
-from django.conf.urls.static import static
-from django.conf import settings
+# from django.conf.urls.static import static
+# from django.conf import settings
 from api.urls import router
+from rest_framework.documentation import include_docs_urls
 
+API_TITLE = 'David\'s API'
+API_DESCRIPTION = 'This is a description'
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'', include('blog.urls')),
     url(r'^projects/', include('projects.urls')),
     url(r'^about-me/', include('aboutme.urls')),
-]# + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+]  # + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 urlpatterns += [
     url(r'^api/', include(router.urls)),
+    url(r'^api/docs/', include_docs_urls(title=API_TITLE, description=API_DESCRIPTION)),
     url(r'^api-auth/', include('rest_framework.urls',
                                namespace='rest_framework')),
 ]
